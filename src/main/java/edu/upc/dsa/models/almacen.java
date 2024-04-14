@@ -16,8 +16,15 @@ public class almacen {
         return dronesAlmacenados.size();
 
     }
-    public List<dron> getDronesAlmacenados() {
-        return dronesAlmacenados;
+    public dron repararDron() {
+        if (!dronesAlmacenados.isEmpty()) {
+            dron dronReparado = dronesAlmacenados.get(0);
+            dronesAlmacenados.remove(0);
+            return dronReparado;
+        }
+        else {
+            return null;
+        }
+    }
 
-
-}}
+}
