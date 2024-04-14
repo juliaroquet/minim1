@@ -8,9 +8,11 @@ public class Almacen {
     private static final Logger logger = Logger.getLogger(Almacen.class);
     private static Almacen instance;
     private List<Object> dronesAlmacenados;
+    private List<reserva> reservas;
 
     private Almacen() {
         this.dronesAlmacenados = new ArrayList<Object>();
+        this.reservas= new ArrayList<>();
     }
 
     public static Almacen getInstance() {
@@ -37,6 +39,39 @@ public class Almacen {
             return null;
         }
     }
+    public void agregarReserva(reserva reserva)
+    {
+        reservas.add(reserva);
+    }
+    public boolean containsDron(String identificadorDron) {
+        for (Object dron : dronesAlmacenados) {
+
+            if (dron.getClass().equals(identificadorDron)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public List<reserva> obtenerReservasPorPiloto(String identificadorPiloto) {
+        List<reserva> reservasPorPiloto = new ArrayList<>();
+        for (reserva reserva : reservas) {
+            if (reserva.getPiloto().getIdentificador().equals(identificadorPiloto)) {
+                reservasPorPiloto.add(reserva);
+            }
+        }
+        return reservasPorPiloto;
+    }
+    public List<reserva> obtenerReservasPorDron(String identificadorDron) {
+        List<reserva> reservasPorDron = new ArrayList<>();
+        for (reserva reserva : reservas) {
+            if (reserva.getDron().getIdentificador().equals(identificadorDron)) {
+                reservasPorDron.add(reserva);
+            }
+        }
+        return reservasPorDron;
+    }
+
+
 }
 
 
