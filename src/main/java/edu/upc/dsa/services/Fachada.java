@@ -1,18 +1,16 @@
-// Fachada.java
 package edu.upc.dsa.services;
-
+import edu.upc.dsa.models.Almacen;
 public class Fachada {
     private static Fachada instance;
 
     private DronService dronService;
     private PilotoService pilotoService;
-    private ReservaService reservaService;
-    private AlmacenService almacenService;
+    private Almacen almacen;
 
     private Fachada() {
         this.dronService = new DronServiceImpl();
-        this.pilotoService = new PilotoServiceImpl();
-        // Agrega aquí la inicialización de reservaService y almacenService si es necesario
+        this.pilotoService = new PilotoServicioImpl();
+        this.almacen = Almacen.getInstance();
     }
 
     public static Fachada getInstance() {
@@ -25,10 +23,27 @@ public class Fachada {
     public DronService getDronService() {
         return dronService;
     }
-
     public PilotoService getPilotoService() {
         return pilotoService;
     }
-
-    // Agrega aquí los métodos para obtener reservaService y almacenService si es necesario
+    public Almacen getAlmacen() {
+        return almacen;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
