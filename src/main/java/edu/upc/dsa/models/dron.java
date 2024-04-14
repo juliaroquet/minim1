@@ -1,9 +1,5 @@
 package edu.upc.dsa.models;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
 public class dron {
      String identificador;
      String nombre;
@@ -60,20 +56,9 @@ public class dron {
         this.modelo = modelo;
 }
 
-public static class DronManager {
-    List<dron> drones = new ArrayList<dron>();
 
-    public void agregarDron(String identificador, String nombre, String fabricante, String modelo) {
-        dron nuevodron = new dron(identificador, nombre, fabricante, modelo);
-        drones.add(nuevodron);
-    }
 
-    public List<dron> listarDrones() {
-        List<dron> dronesOrdenados = new ArrayList<>(drones);
-        dronesOrdenados.sort(Comparator.comparing(dron::getHorasVuelo).reversed());
-        return dronesOrdenados;
-    }
-}}
+}
 
 
 
