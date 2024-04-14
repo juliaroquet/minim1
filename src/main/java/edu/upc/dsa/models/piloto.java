@@ -1,9 +1,5 @@
 package edu.upc.dsa.models;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
 public class piloto {
     String identificador;
     String nombre;
@@ -46,26 +42,7 @@ public class piloto {
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
-    }
-
-
-
-    public static class PilotoManager {
-        List<piloto> pilotos = new ArrayList<>();
-
-        public void agregarPiloto(String identificador, String nombre, String apellidos) {
-            piloto nuevoPiloto = new piloto(identificador, nombre, apellidos);
-            pilotos.add(nuevoPiloto);
-        }
-
-        public List<piloto> listarPilotos() {
-            List<piloto> pilotosOrdenados = new ArrayList<>(pilotos);
-            pilotosOrdenados.sort(Comparator.comparing(piloto::getHorasVuelo).reversed());
-            return pilotosOrdenados;
-        }
     }}
-
-
 
 
 
