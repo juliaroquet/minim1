@@ -1,60 +1,75 @@
 package edu.upc.dsa.models;
 
-
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class piloto {
-    private String id;
-    private String name;
-    private String lastName;
-    private int flightHours;
+    String identificador;
+    String nombre;
+    String apellidos;
+    double horasVuelo;
 
-    // Constructor
-    public piloto(String id, String name, String lastName) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.flightHours = 0;
+    public piloto(String identificador, String nombre, String apellidos) {
+        this.identificador = identificador;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.horasVuelo = 0;
     }
 
-    // Getters y Setters
-    public String getId() {
-        return id;
+    public double getHorasVuelo() {
+        return horasVuelo;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setHorasVuelo(double horasVuelo) {
+        this.horasVuelo = horasVuelo;
+    }
+    public String getIdentificador() {
+        return identificador;
     }
 
-    public String getName() {
-        return name;
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public int getFlightHours() {
-        return flightHours;
-    }
-
-    public void setFlightHours(int flightHours) {
-        this.flightHours = flightHours;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
 
-    public static Comparator<piloto> flightHoursComparator = new Comparator<piloto>() {
-        @Override
-        public int compare(piloto p1, piloto p2) {
-            return p2.getFlightHours() - p1.getFlightHours();
+
+    public static class PilotoManager {
+        List<piloto> pilotos = new ArrayList<>();
+
+        public void agregarPiloto(String identificador, String nombre, String apellidos) {
+            piloto nuevoPiloto = new piloto(identificador, nombre, apellidos);
+            pilotos.add(nuevoPiloto);
         }
-    };
-}
+
+        public List<piloto> listarPilotos() {
+            List<piloto> pilotosOrdenados = new ArrayList<>(pilotos);
+            pilotosOrdenados.sort(Comparator.comparing(piloto::getHorasVuelo).reversed());
+            return pilotosOrdenados;
+        }
+    }}
+
+
+
+
+
+
+
+
+

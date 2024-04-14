@@ -1,28 +1,39 @@
 package edu.upc.dsa.models;
 
-public class dron {
-    private String id;
-    private String nombre;
-    private String fabricante;
-    private String modelo;
-    private int flightHours;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
-    // Constructor
-    public dron (String id, String nombre, String fabricante, String modelo) {
-        this.id = id;
+public class dron {
+     String identificador;
+     String nombre;
+     String fabricante;
+     String modelo;
+     double horasVuelo;
+
+    public dron(String identificador, String nombre, String fabricante, String modelo) {
+        this.identificador = identificador;
         this.nombre = nombre;
         this.fabricante = fabricante;
         this.modelo = modelo;
-        this.flightHours = 0;
+        this.horasVuelo = 0;
     }
 
 
-    public String getId() {
-        return id;
+
+    public double getHorasVuelo() {
+        return horasVuelo;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setHorasVuelo(double horasVuelo) {
+        this.horasVuelo = horasVuelo;
+    }
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
     }
 
     public String getNombre() {
@@ -47,17 +58,27 @@ public class dron {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
-    }
-
-    public int getFlightHours() {
-        return flightHours;
-    }
-
-    public void setFlightHours(int flightHours) {
-        this.flightHours = flightHours;
-    }
-
-    public static int getHorasDeVuelo(Object o) {
-        return 0;
-    }
 }
+
+public static class DronManager {
+    List<dron> drones = new ArrayList<dron>();
+
+    public void agregarDron(String identificador, String nombre, String fabricante, String modelo) {
+        dron nuevodron = new dron(identificador, nombre, fabricante, modelo);
+        drones.add(nuevodron);
+    }
+
+    public List<dron> listarDronesPorHorasDeVueloDescendente() {
+        List<dron> dronesOrdenados = new ArrayList<>(drones);
+        dronesOrdenados.sort(Comparator.comparing(dron::getHorasVuelo).reversed());
+        return dronesOrdenados;
+    }
+}}
+
+
+
+
+
+
+
+

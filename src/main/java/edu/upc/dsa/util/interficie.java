@@ -1,8 +1,6 @@
 package edu.upc.dsa.util;
 
-import edu.upc.dsa.exceptions.*;
 import edu.upc.dsa.models.dron;
-import edu.upc.dsa.models.piloto;
 
 import java.util.List;
 
