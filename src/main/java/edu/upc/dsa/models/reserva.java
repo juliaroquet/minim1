@@ -1,8 +1,11 @@
 package edu.upc.dsa.models;
+
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 public class reserva {
-
+    private static final Logger logger = Logger.getLogger(reserva.class);
     dron dron;
     String fecha;
     double duracion;
@@ -17,6 +20,7 @@ public class reserva {
         this.Inicio = Inicio;
         this.Destino = Destino;
         this.piloto = piloto;
+        logger.info("reserva creada: " + this.toString());
     }
 
     public dron getDron() {
@@ -67,15 +71,31 @@ public class reserva {
         this.piloto = piloto;
     }
 
+    @Override
+    public String toString() {
+        return "reserva{" +
+                "dron=" + dron +
+                ", fecha='" + fecha + '\'' +
+                ", duracion=" + duracion +
+                ", inicio='" + Inicio + '\'' +
+                ", destino='" + Destino + '\'' +
+                ", piloto=" + piloto +
+                '}';
+    }
+
     public static class ReservaManager {
+        private static final Logger logger = Logger.getLogger(ReservaManager.class);
         List<reserva> reservas;
 
         public ReservaManager() {
             this.reservas = new ArrayList<>();
+            logger.info("instancia creada");
         }
 
         public void agregarReserva(reserva reserva) {
+
             reservas.add(reserva);
+            logger.info("reserva creada " + reserva.toString());
         }
 
         public List<reserva> obtenerReservasPorPiloto(String identificadorPiloto) {
@@ -86,6 +106,7 @@ public class reserva {
                     reservasPorPiloto.add(reserva);
                 }
             }
+            logger.info("reservas piloto: " + identificadorPiloto);
             return reservasPorPiloto;
 
         }
@@ -97,6 +118,7 @@ public class reserva {
                     reservasPorDron.add(reserva);
                 }
             }
+            logger.info("reservas dron: " + identificadorDron);
             return reservasPorDron;
         }
     }
