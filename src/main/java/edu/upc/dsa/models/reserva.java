@@ -1,13 +1,14 @@
 package edu.upc.dsa.models;
-
+import java.util.ArrayList;
+import java.util.List;
 public class reserva {
 
-     dron dron;
-     String fecha;
-     double duracion;
-     String Inicio;
-     String Destino;
-     piloto piloto;
+    dron dron;
+    String fecha;
+    double duracion;
+    String Inicio;
+    String Destino;
+    piloto piloto;
 
     public reserva(dron dron, String fecha, double duracion, String Inicio, String Destino, piloto piloto) {
         this.dron = dron;
@@ -17,6 +18,7 @@ public class reserva {
         this.Destino = Destino;
         this.piloto = piloto;
     }
+
     public dron getDron() {
         return dron;
     }
@@ -65,4 +67,37 @@ public class reserva {
         this.piloto = piloto;
     }
 
+    public static class ReservaManager {
+        List<reserva> reservas;
+
+        public ReservaManager() {
+            this.reservas = new ArrayList<>();
+        }
+
+        public void agregarReserva(reserva reserva) {
+            reservas.add(reserva);
+        }
+
+        public List<reserva> obtenerReservasPorPiloto(String identificadorPiloto) {
+
+            List<reserva> reservasPorPiloto = new ArrayList<>();
+            for (reserva reserva : reservas) {
+                if (reserva.getPiloto().getIdentificador().equals(identificadorPiloto)) {
+                    reservasPorPiloto.add(reserva);
+                }
+            }
+            return reservasPorPiloto;
+
+        }
+
+        public List<reserva> obtenerReservasPorDron(String identificadorDron) {
+            List<reserva> reservasPorDron = new ArrayList<>();
+            for (reserva reserva : reservas) {
+                if (reserva.getDron().getIdentificador().equals(identificadorDron)) {
+                    reservasPorDron.add(reserva);
+                }
+            }
+            return reservasPorDron;
+        }
+    }
 }
