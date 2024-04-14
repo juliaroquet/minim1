@@ -68,7 +68,7 @@ public static class DronManager {
         drones.add(nuevodron);
     }
 
-    public List<dron> listarDronesPorHorasDeVueloDescendente() {
+    public List<dron> listarDrones() {
         List<dron> dronesOrdenados = new ArrayList<>(drones);
         dronesOrdenados.sort(Comparator.comparing(dron::getHorasVuelo).reversed());
         return dronesOrdenados;
