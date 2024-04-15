@@ -23,6 +23,10 @@ public class reserva {
         logger.info("reserva creada: " + this.toString());
     }
 
+    public reserva() {
+
+    }
+
     public dron getDron() {
         return dron;
     }
