@@ -17,5 +17,14 @@ anteriormente: interfaz Java. HEHCHO.
 3.- Implementación de una Fachada (patrón de diseño) que implemente el
 interfaz definido previamente. HEHCO.
 4.- Implementación de un test (JUNIT) sobre el componente desarrollado. Se
-debe implementar cuatro operaciones de test anteriormente descritas. SOLO HAY 1 FUNCIÓN HECHA.
+debe implementar cuatro operaciones de test anteriormente descritas. HECHO
+PARTE II: 5 puntos
+1.- Definir (servicio, operaciones, rutas, métodos HTTP, peticiones, respuestas,
+códigos de respuesta) e implementar un servicio REST que permita realizar las
+(4) operaciones especificadas en la primera parte del ejercicio. Se recomienda
+que todas las operaciones deben retornar “objetos de transferencia” y evitar
+ciclos/relaciones. Si los objetos de negocio son complejos se complica la
+serialización/deserialización. El servicio debe utilizar el componente construido
+en el punto anterior HECHO
+
 
